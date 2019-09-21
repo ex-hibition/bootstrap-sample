@@ -15,7 +15,6 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getUser();
   }
 
   getUser(): void {

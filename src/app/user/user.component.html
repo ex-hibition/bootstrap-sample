@@ -1,4 +1,10 @@
-<div>
+<h2>user.componet</h2>
+
+<p>
+  <button class="btn btn-dark" (click)="getUser()">Search User</button>
+</p>
+
+<div *ngIf="user">
     <table class="table">
         <thead>
             <tr>
@@ -11,10 +17,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngIf="user">
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-            </tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
         </tbody>
     </table>
 </div>
