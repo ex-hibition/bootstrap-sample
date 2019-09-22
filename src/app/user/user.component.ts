@@ -8,7 +8,7 @@ import { User } from '../user';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  user: User;
+  user: User[];
 
   constructor(
     private userService: UserService
@@ -17,8 +17,8 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
 
-  getUser(): void {
-    this.userService.getUser().
+  getUser(term: string): void {
+    this.userService.getUser(term).
     subscribe(user => this.user = user);
   }
 }

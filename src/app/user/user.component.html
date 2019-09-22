@@ -1,24 +1,35 @@
 <h2>user.componet</h2>
 
-<p>
-  <button class="btn btn-dark" (click)="getUser()">Search User</button>
-</p>
+<div class="container">
+    <label>username:</label>
+    <input #userName class="form-control" type="text" placeholder="Enter user name" />
+    <small class="form-text text-muted">注記xxxxxxxxxxxxxxxxxxxxxxx</small>
+    <button class="btn btn-dark" (click)="getUser(userName.value); 
+                userName.value=''">Search User
+    </button>
+</div>
 
-<div *ngIf="user">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    id
-                </th>
-                <th>
-                    name
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-        </tbody>
-    </table>
+<!-- 上マージンを設定 -->
+<div class="container mt-5">
+    <div *ngIf="user">
+        <h5>ユーザ情報</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of user">
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

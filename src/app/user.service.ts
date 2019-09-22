@@ -10,16 +10,24 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = "http://localhost/angular/heroes/?name=Magma";
+  private userUrl = "http://localhost/angular/heroes";
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getUser(): Observable<User> {
-    return this.http.get<User[]>(this.userUrl).pipe(
-      map(user_list => user_list[0]),
-      tap(user => console.log(`getUser() : user=${user}`))
+  getUser(term: string): Observable<User[]> {
+    let url: string = "";
+
+    // 検索語がなければ全権検索
+    if (!term.trim()) {
+      url = this.userUrl
+    }
+    url = `${this.userUrl}/?name=${term}`
+
+    return this.http.get<User[]>(url).pipe(
+      map(user_list => user_list),
+      tap(_ => console.log(`getUser() : term=${term}`))
     )
   }
 }
