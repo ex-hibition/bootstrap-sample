@@ -1,0 +1,21 @@
+<h3>purchase.component</h3>
+
+<div class="container">
+    <div *ngIf="purchase">
+        <h5>商品情報</h5>
+        <table class="table">
+            <tbody>
+                <ng-container *ngFor="let yyyymm of purchase">
+                    <ng-container *ngFor="let item_list of yyyymm | keyvalue">
+                        <tr *ngFor="let item of item_list.value | keyvalue">
+                            <td>{{ item_list.key }}</td>
+                            <ng-container *ngFor="let detail of item.value | keyvalue">
+                                <td>{{ detail.key }} : {{ detail.value }}</td>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

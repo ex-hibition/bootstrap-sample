@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { UserComponent } from './user/user.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
+    PurchaseComponent,
   ],
   imports: [
     HttpClientModule,
