@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { User } from './user';
@@ -13,6 +13,10 @@ import { Purchase } from './purchase';
 export class UserService {
   private userUrl = "http://localhost/angular/heroes";
   private parchaseUrl ="http://localhost/sample/purchases"
+
+  // ユーザidをコンポーネント間で連携
+  public userSubject = new Subject<any>();
+  public userObservable = this.userSubject.asObservable();
 
   constructor(
     private http: HttpClient
@@ -29,8 +33,8 @@ export class UserService {
     url = `${this.userUrl}/?name=${term}`
 
     return this.http.get<User[]>(url).pipe(
-      map(user_list => user_list),
-      tap(_ => console.log(`getUser() : term=${term}`))
+      tap(_ => console.log(`getUser() : term=${term}`)
+      )
     )
   }
 
@@ -45,8 +49,8 @@ export class UserService {
     url = `${this.parchaseUrl}/${id}`
 
     return this.http.get<Purchase[]>(url).pipe(
-      map(purchase_list => purchase_list),
-      tap(_ => console.log(`getPurchase(): id=${id}`))
+      tap(_ => console.log(`getPurchase(): id=${id}`)
+      )
     )
   }
 }

@@ -21,4 +21,10 @@ export class UserComponent implements OnInit {
     this.userService.getUser(term).
     subscribe(user => this.user = user);
   }
+
+  // UserServiceのSubjectにidを送る
+  setId(id: number): void {
+    this.userService.userSubject.next(id);
+    console.log(`user.component: setId(): id=${id}`)
+  }
 }

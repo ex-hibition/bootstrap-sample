@@ -22,12 +22,16 @@
                     <th>
                         name
                     </th>
+                    <th>
+                        action
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let u of user">
                     <td>{{ u.id }}</td>
                     <td>{{ u.name }}</td>
+                    <td><button class="btn btn-dark" (click)="setId(u.id)">Serach Purchase</button></td>
                 </tr>
             </tbody>
         </table>

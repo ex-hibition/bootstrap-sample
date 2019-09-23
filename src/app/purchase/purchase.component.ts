@@ -15,7 +15,12 @@ export class PurchaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPurchases("12");
+    // UserServiceのSubjectをsubscribeしてidを取得する
+    this.userService.userObservable.subscribe(
+      (id: number) => {
+        this.getPurchases(`${id}`);
+      }
+    );
   }
 
   getPurchases(id: string): void {
