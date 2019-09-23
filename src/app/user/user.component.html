@@ -5,7 +5,7 @@
     <input #userName class="form-control" type="text" placeholder="Enter user name" />
     <small class="form-text text-muted">注記xxxxxxxxxxxxxxxxxxxxxxx</small>
     <button class="btn btn-dark" (click)="getUser(userName.value); 
-                userName.value=''">Search User
+                userName.value=''">Search user
     </button>
 </div>
 
@@ -31,7 +31,7 @@
                 <tr *ngFor="let u of user">
                     <td>{{ u.id }}</td>
                     <td>{{ u.name }}</td>
-                    <td><button class="btn btn-dark" (click)="setId(u.id)">Serach Purchase</button></td>
+                    <td><button class="btn btn-dark" (click)="setId(u.id)">Search purchase</button></td>
                 </tr>
             </tbody>
         </table>
