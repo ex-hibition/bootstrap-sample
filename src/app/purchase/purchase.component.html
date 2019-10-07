@@ -2,8 +2,9 @@
 
 <div class="container">
     <div *ngIf="purchase">
-        <h5>商品情報</h5>
+        <h5>購入履歴</h5>
         <table class="table">
+            <caption>Purchase history</caption>
             <tbody>
                 <ng-container *ngFor="let yyyymm of purchase">
                     <ng-container *ngFor="let item_list of yyyymm | keyvalue">
