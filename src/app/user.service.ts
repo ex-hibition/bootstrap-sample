@@ -6,6 +6,7 @@ import { map, tap } from 'rxjs/operators';
 
 import { User } from './user';
 import { Purchase } from './purchase';
+import { Billing } from './billing';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { Purchase } from './purchase';
 export class UserService {
   private userUrl = "http://localhost/angular/heroes";
   private parchaseUrl ="http://localhost/sample/purchases"
+  private billingUrl = "http://localhost/bill/billing"
 
   // ユーザidをコンポーネント間で連携
   public userSubject = new Subject<any>();
@@ -53,4 +55,21 @@ export class UserService {
       )
     )
   }
+
+  /** ユーザの請求履歴を取得する */
+  getBilling(id: string): Observable<Billing[]> {
+    let url: string = "";
+
+    // id指定がなければ全件取得
+    if (!id) {
+      url = this.billingUrl;
+    }
+    url = `${this.billingUrl}/${id}`
+
+    return this.http.get<Billing[]>(url).pipe(
+      tap(_ => console.log(`getBilling(): id=${id}`)
+      )
+    )
+  }
+
 }

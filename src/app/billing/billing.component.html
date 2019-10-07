@@ -1,0 +1,24 @@
+<h3>billing.component</h3>
+
+<div class="container">
+    <div *ngIf="billing">
+        <h5>請求履歴</h5>
+        <table class="table">
+            <caption>Billing history</caption>
+            <tbody>
+                <ng-container *ngFor="let item of billing">
+                    <ng-container *ngFor="let item_list of item | keyvalue">
+                        <tr>
+                            <td>{{ item_list.key }}</td>
+                            <ng-container *ngFor="let detail of item_list.value">
+                                <td *ngFor="let element of detail | keyvalue">
+                                    {{ element.key }} : {{element.value}}
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

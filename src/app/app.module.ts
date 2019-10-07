@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 
 import { UserComponent } from './user/user.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     PurchaseComponent,
+    BillingComponent,
   ],
   imports: [
     HttpClientModule,

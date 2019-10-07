@@ -25,6 +25,6 @@ export class PurchaseComponent implements OnInit {
 
   getPurchases(id: string): void {
     this.userService.getPurchase(id).
-    subscribe(purchase => this.purchase = purchase)
+    subscribe(purchase => this.purchase = purchase);
   }
 }
